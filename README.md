@@ -75,7 +75,21 @@ in-body links) and a deliberately modest, non-engagement-bait structure. Runs an
 authenticity check against `voice/style-profile.md` before finishing. Writes
 `drafts/<date>-<slug>.md`.
 
-### 6. `post-image` — generate a card image (optional, per draft)
+### 6. `content-calendar` — map posts onto actual dates
+
+**Say:** "run content-calendar" (or "what should I post next, and when").
+
+Builds and maintains `strategy/calendar.md`: the posting schedule (cadence, days, time slots —
+defaults to mid-week morning/midday slots for a B2B audience if you have no preference, with the
+reasoning written into the file), the pillar-rotation order, and a log table that walks the
+rotation forward, assigning the next available drafted-or-backlog item to each upcoming slot. Flags
+any pillar whose queue is running thin (a cue to go back to `idea-mine`/`draft-post`) instead of
+inventing filler. Tracks each slot's status as `needs draft-post` → `ready to post` → `posted` —
+it only ever marks something `posted` when you explicitly confirm it went out, since LinkedIn has
+no API to check that automatically. Re-run this any time a draft gets written, a post goes out, or
+you just want to see what's next.
+
+### 7. `post-image` — generate a card image (optional, per draft)
 
 **Say:** "make an image for the [slug] draft."
 
@@ -84,18 +98,19 @@ broken-ring "gap" motif, and a quiet closing tagline — no stock photography, n
 hustle-culture visual language. Saved to `drafts/images/<date>-<slug>.png`, referenced from the
 draft's frontmatter. Skip this for any post you don't want a card for.
 
-### 7. Publish it yourself
+### 8. Publish it yourself
 
-Copy the draft (and image, if you made one) to LinkedIn and post it. This workspace never
-publishes on your behalf — LinkedIn automation risks the account and isn't something Claude Code
-does here regardless.
+Copy the draft (and image, if you made one) to LinkedIn and post it, on the date `content-calendar`
+mapped it to. This workspace never publishes on your behalf — LinkedIn automation risks the
+account and isn't something Claude Code does here regardless. Once it's live, tell
+`content-calendar` so it can flip that slot's status to `posted`.
 
-### 8. `log-performance` *(not yet built)* — record what happened
+### 9. `log-performance` *(not yet built)* — record what happened
 
 Once available, this will let you paste in stats (views, reactions, comments, profile views, SSI)
 for a published post into `published/performance-log.md`.
 
-### 9. `review-performance` *(not yet built)* — learn from what worked
+### 10. `review-performance` *(not yet built)* — learn from what worked
 
 Once available, this will read the performance log, report what's working by pillar/format/
 hook/timing, and feed findings back into `content-strategy` and `idea-mine`.

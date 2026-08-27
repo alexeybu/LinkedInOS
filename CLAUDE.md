@@ -55,7 +55,10 @@ the job search, not generic personal branding.
   a serif hook quote, a small broken-ring "gap" motif, a pillar kicker, a closing tagline.
   Rectangular (1080x608) by default; matches the same modest, no-stock-photo calibration as the
   post text itself.
-- `content-calendar` *(not yet built)* — maintains `strategy/calendar.md`.
+- `content-calendar` — maintains `strategy/calendar.md`: the posting schedule (cadence, days, time
+  slots), the pillar-rotation order, and a log mapping specific drafts/backlog ideas onto calendar
+  dates as they're written and posted. Re-run whenever the backlog or drafts change, or a post
+  goes out, to keep the mapping in sync — never marks anything `posted` without your confirmation.
 - `log-performance` *(not yet built)* — appends pasted-in post stats to
   `published/performance-log.md`.
 - `review-performance` *(not yet built)* — reads the performance log, reports what's working
@@ -73,9 +76,11 @@ the job search, not generic personal branding.
 4. Run `idea-mine` to keep `ideas/backlog.md` stocked with real, specific post concepts, informed
    by trend notes when available.
 5. Pick an idea, run `draft-post` to get a polished, voice-matched draft.
-6. Post it yourself on LinkedIn — this workspace never publishes on your behalf.
-7. Run `log-performance` once you have stats to paste in.
-8. Periodically run `review-performance` to see what's working and adjust pillars/ideas
+6. Run `content-calendar` to map drafted/backlog posts onto actual dates, following the pillar
+   rotation and cadence from `content-strategy`; re-run it as drafts get written and posts go out.
+7. Post it yourself on LinkedIn — this workspace never publishes on your behalf.
+8. Run `log-performance` once you have stats to paste in.
+9. Periodically run `review-performance` to see what's working and adjust pillars/ideas
    accordingly.
 
 ## Ground rules

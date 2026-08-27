@@ -19,7 +19,7 @@ Resets:
 
 Does **not** touch:
 - `voice/style-profile.md`
-- `strategy/calendar.md` (a different skill's output, once `content-calendar` exists)
+- `strategy/calendar.md` (the `content-calendar` skill's own output, out of scope here)
 - `drafts/`, `published/`, `templates/`
 
 ## 1. Show current state and confirm scope
