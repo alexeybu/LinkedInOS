@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@500;600&display=swap">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+</style>
+</head>
+<body>
+<div style="width:__WIDTH__px;height:__HEIGHT__px;background:oklch(0.16 0.015 55);display:flex;flex-direction:column;justify-content:space-between;padding:__PAD_V__px __PAD_H__px;font-family:'IBM Plex Sans', system-ui, sans-serif;">
+
+  <div style="display:flex;align-items:center;justify-content:flex-end;">
+    <svg width="__MOTIF_SIZE__" height="__MOTIF_SIZE__" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="36" cy="36" r="28" stroke="#d9a15b" stroke-width="3" stroke-dasharray="150 26" transform="rotate(-90 36 36)"/>
+    </svg>
+  </div>
+
+  <div style="max-width:__QUOTE_MAX_WIDTH__px;">
+    <p style="margin:0;font-family:'Newsreader', Georgia, serif;font-weight:500;font-size:__QUOTE_SIZE__px;line-height:1.28;letter-spacing:-0.01em;color:oklch(0.96 0.01 60);text-wrap:pretty;">
+      __QUOTE__
+    </p>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div style="width:44px;height:1px;background:oklch(0.96 0.01 60 / 0.35);"></div>
+    <div style="font-family:'IBM Plex Sans', system-ui, sans-serif;font-weight:500;font-size:__TAGLINE_SIZE__px;letter-spacing:0.02em;color:oklch(0.96 0.01 60 / 0.6);">
+      __TAGLINE__
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Personal content — this repo is the LinkedInOS framework/skills, not the content itself.
+# Keep per-folder README.md (structure docs) but ignore generated/personal files.
+
+# Voice profile (real writing-voice data)
+voice/style-profile.md
+
+# Strategy outputs (pillars, calendar, trend notes)
+strategy/content-pillars.md
+strategy/calendar.md
+strategy/trend-notes.md
+
+# Idea backlog
+ideas/backlog.md
+ideas/backlog.md.bak*
+
+# Drafts (posts + card images)
+drafts/*.md
+!drafts/README.md
+drafts/images/
+
+# Published performance data
+published/performance-log.md
+
+# Strategy backups
+_strategy-backups/
+
+# Local Claude Code config/state (not used yet, but keep out if it appears)
+.claude/settings.local.json
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
