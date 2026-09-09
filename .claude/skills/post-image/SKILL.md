@@ -6,21 +6,30 @@ description: Generate a LinkedIn card image (PNG) for a drafted post in drafts/*
 # Post Image
 
 Turns one drafted post into a single dark quote-card PNG in the visual style established
-2026-08-24: deep ink background, a serif hook quote, a small broken-ring "gap" motif, and a quiet
-closing tagline. No stock photography, no gradients, no emoji-as-icon, no hustle-culture visual
-language — this mirrors the same modest calibration `draft-post` applies to the text itself.
+2026-08-24: deep ink background, a serif hook quote, a small topic-specific line-art icon, and a
+quiet closing tagline. No stock photography, no gradients, no emoji-as-icon, no hustle-culture
+visual language — this mirrors the same modest calibration `draft-post` applies to the text itself.
 
 **Kicker removed 2026-08-26** (explicit user request): earlier cards (drafted before this date)
 carried an uppercase pillar-name kicker in the top-left, paired with the motif top-right. Cards
 generated from this date forward drop the kicker entirely — the motif now sits alone, top-right.
 Don't regenerate the earlier cards to match unless the user asks; this only governs new renders.
 
+**Motif became topic-specific 2026-08-30** (explicit user request — "not only text, some image
+related to the topic of the post"): cards through 2026-08-29 all used one fixed broken-ring motif
+regardless of topic. There's no image-generation tool or stock-photo pipeline available in this
+environment — see the note under step 1's ICON bullet for why a custom vector icon was the chosen
+path over a real photo/AI-generated image. From this date forward, each card gets its own small
+line-art icon built from the actual mechanism or claim of *that* post, in the same accent color and
+stroke weight as the old ring, so the family still reads as one consistent system. Don't
+regenerate earlier cards to match unless the user asks.
+
 ## 0. Identify the draft
 
 Take the draft file path from the request. If none is given, ask which draft in `drafts/` this is
 for rather than guessing.
 
-## 1. Extract the two pieces of text
+## 1. Extract the three pieces
 
 - **QUOTE** — the post's hook (the `## Hook` / `## Final hook` section if the draft has one,
   otherwise the opening sentence(s) of `## Full draft`). Use it verbatim, but convert straight
@@ -31,9 +40,35 @@ for rather than guessing.
   the last sentence — the last sentence is often longer/multi-clause; distill it down the way a
   pull-quote would, without inventing a new idea the post doesn't already make. If the closing
   sentence is already short and quotable as-is, use it verbatim instead of rewording it.
+- **ICON** — a small, single-concept line-art SVG that illustrates the post's actual mechanism or
+  claim, not a generic decoration. Build it from simple geometric primitives (circles, lines,
+  paths) inside a `0 0 72 72` viewBox, using the same accent color (`#d9a15b`) and stroke-width
+  (`3`) as the retired ring motif, so every card still reads as one visual family despite a
+  different mark per topic. A filled accent-colored dot/shape for emphasis is fine (that's not a
+  gradient or stock photography); avoid literal clipart-style objects (no calendar glyph for a
+  scheduling post, no magnifying glass for an "analysis" post) — those read as generic stock-icon
+  filler, which is exactly what this replaces. Think in terms of the post's actual shape: e.g. one
+  filled dot connected to several open ones for a "real owner vs. several assumed ones" post, a
+  tight cluster of dots with one visibly separated for a clustering/theme-check post, a single
+  diverging fork for a "market sorting, not growing" post. If no clean single-shape idea fits the
+  post, it's fine to keep the original broken-ring motif (given below as the fallback) rather than
+  forcing a weak metaphor.
+  - **Why a drawn icon and not a real photo/AI-generated image**: the user's initial ask was for a
+    real photo or AI-generated image per post, not an abstract icon. There's no image-generation
+    tool wired into this environment, and sourcing real photos would mean either the user supplying
+    one per draft or this skill downloading a stock photo from the web each time (which needs
+    per-file explicit permission — filename, source, size — and raises licensing questions this
+    skill isn't set up to track). The user chose the drawn-icon fallback explicitly
+    (2026-08-30) specifically to avoid that manual-sourcing overhead and keep the pipeline fully
+    automated. If a real image ever becomes feasible (an image-gen tool gets added, or the user
+    wants to hand-supply images per draft), revisit this — the current approach is a deliberate
+    compromise, not a rejection of the original request.
+  - **Fallback shape** (use verbatim if nothing post-specific fits):
+    `<circle cx="36" cy="36" r="28" stroke="#d9a15b" stroke-width="3" stroke-dasharray="150 26" transform="rotate(-90 36 36)"/>`
 
 Don't invent content beyond what the draft already says — if the hook or close isn't a good fit
-for a short card, say so rather than paraphrasing something the post doesn't actually claim.
+for a short card, say so rather than paraphrasing something the post doesn't actually claim. The
+icon should visually match a claim/mechanism the post actually makes, not add a new idea.
 
 ## 2. Pick dimensions
 
@@ -50,6 +85,10 @@ step 3 unless asked for a different shape:
 | `__QUOTE_MAX_WIDTH__` | 920 | 900 |
 | `__TAGLINE_SIZE__` | 16 | 17 |
 
+`__MOTIF_SIZE__` sizes the icon's rendered box only — the icon's own viewBox stays `0 0 72 72`
+regardless of shape (a separate token, `__TOPIC_ICON__`, carries the actual per-post SVG markup
+from step 1's ICON — see step 3).
+
 **`__QUOTE_SIZE__` note**: 50/60 are starting points, not fixed values — a long hook in the
 shorter rectangular canvas can overflow or crowd the tagline. After rendering (step 4), open the
 PNG and actually look at it: if the quote block looks cramped or crowds the bottom row, drop
@@ -60,8 +99,10 @@ and re-render rather than shipping a cramped card.
 
 Copy `card-template.html` (in this skill's directory) to a working file and replace every
 `__PLACEHOLDER__` token with its value from steps 1-2 (a simple find-and-replace per token — sed,
-or any string substitution — works fine; there's no build step). Keep the template file itself
-untouched; always work from a fresh copy.
+or any string substitution — works fine; there's no build step). `__TOPIC_ICON__` gets the raw SVG
+markup for the icon designed in step 1 (or the fallback ring shape) — it's inserted as the inner
+content of the template's `<svg>` element, not escaped/wrapped as text. Keep the template file
+itself untouched; always work from a fresh copy.
 
 ## 4. Render to PNG
 
@@ -92,8 +133,9 @@ fires — don't drop it, the card will render in fallback fonts otherwise.
   `drafts/images/` if it doesn't exist yet) — not only in a temp/scratch location, so it persists
   across sessions like the draft itself does.
 - Read the rendered PNG back before sending it — confirm the quote isn't clipped or crowding the
-  tagline, the motif rendered (not a broken-image box), and the fonts loaded (serif quote vs. a
-  generic fallback is visible at a glance). Fix and re-render if not.
+  tagline, the icon rendered as the intended shape (not a broken-image box, and actually
+  recognizable as the concept it's meant to represent, not just abstract clutter), and the fonts
+  loaded (serif quote vs. a generic fallback is visible at a glance). Fix and re-render if not.
 - Add an `image:` field to the draft's frontmatter pointing at the saved PNG path, so the pairing
   is discoverable later.
 - Send the PNG to the user.
@@ -101,9 +143,14 @@ fires — don't drop it, the card will render in fallback fonts otherwise.
 ## Ground rules
 
 - Never invent hook/tagline text beyond what the draft actually says — this skill packages
-  existing copy visually, it doesn't write new copy.
-- Keep the visual system consistent across cards (same colors, fonts, motif, layout logic) unless
-  the user explicitly asks for a style change — consistency across a series of post images matters
-  more than novelty per card.
-- No stock photography, no gradients, no emoji-as-icon — matches the modest, no-hype calibration
-  already established for the post text itself in `draft-post`.
+  existing copy visually, it doesn't write new copy. The icon follows the same rule: it should
+  visualize a claim/mechanism the post already makes, not introduce a new one.
+- Keep the visual system consistent across cards (same colors, fonts, layout logic, line-art
+  style/stroke-weight for the icon) unless the user explicitly asks for a style change —
+  consistency across a series of post images matters more than novelty per card. The icon's
+  *shape* is meant to vary per topic (that's the point, as of 2026-08-30); its color, stroke
+  weight, and viewBox size should not.
+- No stock photography, no gradients, no emoji-as-icon, no literal clipart-style objects (calendar
+  glyphs, magnifying glasses, lightbulbs) — matches the modest, no-hype calibration already
+  established for the post text itself in `draft-post`. The icon is abstract line-art built from
+  the post's own mechanism, not decorative iconography bolted on afterward.

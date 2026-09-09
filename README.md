@@ -75,7 +75,18 @@ in-body links) and a deliberately modest, non-engagement-bait structure. Runs an
 authenticity check against `voice/style-profile.md` before finishing. Writes
 `drafts/<date>-<slug>.md`.
 
-### 6. `content-calendar` — map posts onto actual dates
+### 6. `draft-carousel` — write a carousel/document post, images included
+
+**Say:** "draft the [idea name] carousel" (give an idea ID, and optionally a slide count).
+
+Takes one `Carousel`-tagged idea from `ideas/backlog.md` and produces the whole thing in one pass:
+a cover-slide hook, every content slide's headline + body, a caption, and every slide rendered as a
+PNG — light background, dark text, square 1080×1080, deliberately distinct from `post-image`'s dark
+card so carousels read as their own format. Writes `drafts/<date>-<slug>-carousel.md` plus
+`drafts/images/<slug>/slide-1.png` … `slide-N.png`. The visual spec and per-slide word-count rules
+live in `templates/carousel-post-template.md`.
+
+### 7. `content-calendar` — map posts onto actual dates
 
 **Say:** "run content-calendar" (or "what should I post next, and when").
 
@@ -89,28 +100,29 @@ it only ever marks something `posted` when you explicitly confirm it went out, s
 no API to check that automatically. Re-run this any time a draft gets written, a post goes out, or
 you just want to see what's next.
 
-### 7. `post-image` — generate a card image (optional, per draft)
+### 8. `post-image` — generate a card image for a text post (optional, per draft)
 
 **Say:** "make an image for the [slug] draft."
 
-Generates a single dark quote-card PNG for a specific draft: a serif hook quote, a small
-broken-ring "gap" motif, and a quiet closing tagline — no stock photography, no gradients, no
-hustle-culture visual language. Saved to `drafts/images/<date>-<slug>.png`, referenced from the
-draft's frontmatter. Skip this for any post you don't want a card for.
+Generates a single dark quote-card PNG for a specific **text-post** draft: a serif hook quote, a
+small topic-specific line-art icon, and a quiet closing tagline — no stock photography, no
+gradients, no hustle-culture visual language. Saved to `drafts/images/<date>-<slug>.png`,
+referenced from the draft's frontmatter. Skip this for any post you don't want a card for. (For a
+carousel, image generation is already built into `draft-carousel` — there's no separate step.)
 
-### 8. Publish it yourself
+### 9. Publish it yourself
 
 Copy the draft (and image, if you made one) to LinkedIn and post it, on the date `content-calendar`
 mapped it to. This workspace never publishes on your behalf — LinkedIn automation risks the
 account and isn't something Claude Code does here regardless. Once it's live, tell
 `content-calendar` so it can flip that slot's status to `posted`.
 
-### 9. `log-performance` *(not yet built)* — record what happened
+### 10. `log-performance` *(not yet built)* — record what happened
 
 Once available, this will let you paste in stats (views, reactions, comments, profile views, SSI)
 for a published post into `published/performance-log.md`.
 
-### 10. `review-performance` *(not yet built)* — learn from what worked
+### 11. `review-performance` *(not yet built)* — learn from what worked
 
 Once available, this will read the performance log, report what's working by pillar/format/
 hook/timing, and feed findings back into `content-strategy` and `idea-mine`.
