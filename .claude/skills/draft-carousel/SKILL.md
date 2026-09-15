@@ -63,6 +63,9 @@ Per `templates/carousel-post-template.md`'s Visual spec — don't deviate withou
   point, that's a sign the point needs its own slide, not invented elaboration to hit a word count.
 - **Slide count includes cover + close** on top of the real content items — a 4-point checklist is 6
   slides, not 4.
+- **Prefer a sketchy-style schema/diagram over a text-only slide** where a clean visual exists for
+  the point (added 2026-09-11, explicit user request). See Section 6a for how to design one and
+  when to skip it.
 - **No external links** anywhere (caption or slides).
 - **En dash (–), not em dash**, throughout.
 - **General-centric framing** (no first-person "I") unless the idea's pillar is Job Search & Career
@@ -99,6 +102,31 @@ Using the recommended cover hook, write every slide: headline + body per Section
 rules, one content point per slide, closing on a compact reframe or plain restatement (never a
 question). Anonymize per guardrails as you go.
 
+## 6a. Design a diagram for slides where one earns its place (added 2026-09-11)
+
+For each content/close slide, before accepting a text-only layout, consider whether the point has
+a clean visual shape — a before→after pair, a flow between two or three things, a comparison, a
+relationship — the way `post-image`'s topic icon already does for single-image posts. If one fits,
+build a small schema in the same spirit: simple geometric primitives (boxes, arrows, circles,
+dashed vs. solid lines), not a literal illustration or clipart (no lightbulb for "an idea," no
+magnifying glass for "analysis"). Think in terms of the slide's actual mechanism: e.g. a filled box
+labeled with the wrong owner connected by an arrow to a dashed, crossed-out circle for a
+"nobody owns it" slide; two stacked boxes with a struck-through arrow between them for a
+"the metric doesn't drive the decision" slide; a clock face with a lagging hand for a staleness
+slide. **If no clean single-shape idea fits a given slide, leave it text-only** — a forced or
+generic diagram is worse than none, exactly like `post-image`'s icon fallback rule. Not every slide
+needs one; the cover slide in particular should generally stay text-only, since it's already
+minimal by design (Section 2).
+
+Build the diagram as an SVG fragment (labels in `IBM Plex Sans`, drawing strokes in `#a9702c` at
+`stroke-width:3-4`, `fill:none` unless a filled accent shape genuinely helps) sized to roughly
+700×300-360 within a `viewBox` that matches those proportions — it renders into the slide's middle
+region (between the body text and the footer), which is otherwise empty space. Wrap the drawing
+elements in `<g filter="url(#sketchy)">…</g>` — `card-template.html` already defines that filter
+(the same hand-drawn `feTurbulence`/`feDisplacementMap` technique `post-image` uses) — don't
+hand-simulate roughness in the path coordinates themselves. Text labels inside the diagram go
+*outside* the sketchy group (filters distort text into illegibility), plain and small.
+
 ## 7. Write the LinkedIn caption
 
 2-4 sentences in the user's real voice (long clause-chained sentences reformatted into short visual
@@ -124,6 +152,7 @@ slide and fill its placeholders:
 | `__HEADLINE__` | this slide's headline |
 | `__BODY_SIZE__` | `36` (every slide) |
 | `__BODY__` | this slide's body text |
+| `__DIAGRAM__` | the raw SVG fragment from Section 6a (sketchy-filtered drawing + plain labels), or an empty string (`""`) if this slide stays text-only |
 | `__FOOTER__` | `Swipe through the <N-2> →` on the cover, `Swipe →` on every content slide, empty (`""`) on the close slide |
 
 Render each filled file to PNG with headless Chrome (fall back to Edge if Chrome isn't present):
@@ -149,8 +178,10 @@ before the screenshot fires — don't drop it.
 Save each PNG to `drafts/images/<slug>/slide-<N>.png` (create the directory if it doesn't exist).
 **Read every rendered PNG back before finishing** — confirm no headline/body text is clipped or
 overflowing the canvas, the cover really does read as a hook (not a wall of text), fonts loaded
-(Sora bold headline vs. a generic fallback is visible at a glance), and the light background/dark
-text contrast looks right. Fix and re-render any slide that doesn't pass this check.
+(Sora bold headline vs. a generic fallback is visible at a glance), the light background/dark
+text contrast looks right, and — on any slide carrying a diagram — the shape actually rendered
+recognizably (not a broken/empty region) and reads as the concept it's meant to represent, not
+abstract clutter. Fix and re-render any slide that doesn't pass this check.
 
 ## 10. Save the draft
 
@@ -179,5 +210,8 @@ behalf — the deliverable is the drafted files, posting is always manual.
   colors, layout) unless the user explicitly asks to change it — and if they do, update that
   template file first so it stays the source of truth for this skill's renders, the same way
   `post-image`'s established style lives in its own SKILL.md rather than being reinvented per draft.
+- A diagram is optional per slide, never mandatory — a forced or generic one is worse than a clean
+  text-only slide. Same rule `post-image` applies to its topic icon: visualize a mechanism the
+  content already makes, don't invent a new claim just to have something to draw.
 - This skill writes drafts, not final copy carved in stone — expect and invite edits, including
   regenerating individual slides rather than the whole set.

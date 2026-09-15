@@ -9,23 +9,31 @@
 </style>
 </head>
 <body>
-<div style="width:__WIDTH__px;height:__HEIGHT__px;background:oklch(0.16 0.015 55);display:flex;flex-direction:column;justify-content:space-between;padding:__PAD_V__px __PAD_H__px;font-family:'IBM Plex Sans', system-ui, sans-serif;">
+<div style="width:__WIDTH__px;height:__HEIGHT__px;background:oklch(0.965 0.012 75);display:flex;flex-direction:column;justify-content:space-between;padding:__PAD_V__px __PAD_H__px;font-family:'IBM Plex Sans', system-ui, sans-serif;">
 
   <div style="display:flex;align-items:center;justify-content:flex-end;">
     <svg width="__MOTIF_SIZE__" height="__MOTIF_SIZE__" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      __TOPIC_ICON__
+      <defs>
+        <filter id="sketchy" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="5" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.4"/>
+        </filter>
+      </defs>
+      <g filter="url(#sketchy)">
+        __TOPIC_ICON__
+      </g>
     </svg>
   </div>
 
   <div style="max-width:__QUOTE_MAX_WIDTH__px;">
-    <p style="margin:0;font-family:'Newsreader', Georgia, serif;font-weight:500;font-size:__QUOTE_SIZE__px;line-height:1.28;letter-spacing:-0.01em;color:oklch(0.96 0.01 60);text-wrap:pretty;">
+    <p style="margin:0;font-family:'Newsreader', Georgia, serif;font-weight:500;font-size:__QUOTE_SIZE__px;line-height:1.28;letter-spacing:-0.01em;color:oklch(0.18 0.02 50);text-wrap:pretty;">
       __QUOTE__
     </p>
   </div>
 
   <div style="display:flex;align-items:center;gap:16px;">
-    <div style="width:44px;height:1px;background:oklch(0.96 0.01 60 / 0.35);"></div>
-    <div style="font-family:'IBM Plex Sans', system-ui, sans-serif;font-weight:500;font-size:__TAGLINE_SIZE__px;letter-spacing:0.02em;color:oklch(0.96 0.01 60 / 0.6);">
+    <div style="width:36px;height:3px;background:#a9702c;border-radius:2px;"></div>
+    <div style="font-family:'IBM Plex Sans', system-ui, sans-serif;font-weight:500;font-size:__TAGLINE_SIZE__px;letter-spacing:0.02em;color:oklch(0.32 0.02 50 / 0.75);">
       __TAGLINE__
     </div>
   </div>

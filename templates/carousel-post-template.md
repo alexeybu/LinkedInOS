@@ -24,6 +24,10 @@ at a glance (carousels/documents report ~39% more reach than text posts per
 - **Slide count always includes the cover and the close** on top of the real content items — a
   4-point checklist is 6 slides total (cover + 4 + close), not 4. `ideas/backlog.md`'s `Format`
   column already carries this breakdown per idea; use it rather than re-deriving the count.
+- **A sketchy-style schema/diagram is preferred over text-only, where a clean one exists**
+  (added 2026-09-11). The slide's otherwise-empty middle region (between the body text and the
+  footer) is exactly where it goes. Never forced — a slide with no natural visual shape stays
+  text-only. See `draft-carousel`'s Section 6a for how to design and render one.
 - **The LinkedIn caption (the text box under the carousel) is separate copy from the slide text**
   — it hooks the reader into swiping and gives the post its own standalone read for anyone who
   never opens the document; it doesn't just restate the slides verbatim.
@@ -49,6 +53,7 @@ serif-quote card, so carousels read as their own format):
 | Body length — **cover** | one short hook line only, no paragraph |
 | Body length — **content/close** | ~50-90 words / 3-5 sentences |
 | Layout | top-weighted (content starts right below the slide-counter row, not vertically centered) — avoids the symmetric dead space a centered block leaves on a mostly-empty canvas |
+| Diagram region | the middle area between body text and footer — optional per slide (added 2026-09-11); sketchy-filtered SVG drawing (`#a9702c`, stroke-width 3-4) + plain text labels, roughly 700×300-360 |
 | Accent bar + footer | bottom-left; footer reads "Swipe through the N →" on the cover, "Swipe →" on middle content slides, empty on the close slide |
 | Slide counter | top-right, "N / TOTAL" |
 
@@ -100,6 +105,7 @@ bold-claim, plain-statement), one marked recommended.
 ### Slide 2 — <short label for this point>
 **Headline:** <≤10 words>
 **Body:** <50-90 words / 3-5 sentences, pulled from the idea's real detail>
+**Diagram:** <one-line description of the sketchy schema, if this slide earns one — or "none, text-only" if no clean shape fits>
 
 <!-- one block per content slide — repeat to match the backlog row's real item count -->
 
@@ -107,6 +113,7 @@ bold-claim, plain-statement), one marked recommended.
 **Headline:** <a compact reframe or plain restatement — never an engagement-bait question, per
 `voice/style-profile.md` Anti-Patterns>
 **Body:** <50-90 words / 3-5 sentences, same density as a content slide>
+**Diagram:** <optional, same rule as above — closes often stay text-only since the reframe is the payoff>
 
 ## LinkedIn caption
 

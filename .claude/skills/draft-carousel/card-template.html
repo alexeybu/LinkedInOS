@@ -24,7 +24,17 @@
     </p>
   </div>
 
-  <div style="flex:1;"></div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <svg width="0" height="0">
+      <defs>
+        <filter id="sketchy" x="-30%" y="-30%" width="160%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/>
+        </filter>
+      </defs>
+    </svg>
+    __DIAGRAM__
+  </div>
 
   <div style="display:flex;align-items:center;gap:14px;">
     <div style="width:36px;height:3px;background:#a9702c;border-radius:2px;"></div>
