@@ -65,10 +65,18 @@ Read, in this order:
 - **Reformat the user's long clause-chained sentences into short visual lines** (line breaks
   between clauses) rather than shortening the sentences themselves — per `voice/style-profile.md`'s
   explicit instruction to `draft-post`. Don't flatten the voice to fit the medium.
-- **Formatting habits**: inline-dash lists over bullet lists (per the confirmed pattern in
-  `voice/style-profile.md`); light emoji use and 3-5 hashtags as the current *unconfirmed default*
-  (flag this in the draft's notes as still needing real-post feedback to confirm, per that file's
-  own Gaps section) — don't invent heavier formatting than that default.
+- **Formatting habits**: inline-dash lists over bullet lists for take/op-ed and narrative prose
+  (per the confirmed pattern in `voice/style-profile.md`); light emoji use and 3-5 hashtags as the
+  current *unconfirmed default* (flag this in the draft's notes as still needing real-post feedback
+  to confirm, per that file's own Gaps section) — don't invent heavier formatting than that
+  default.
+- **Data-led/informational posts specifically** (payload is primarily findings from a real
+  dataset): per `voice/style-profile.md`'s Formatting Habits section (2026-09-24 addition), default
+  to the more direct, scannable register — cut connective narration between findings, use a
+  scannable arrow-bullet list (→) for parallel stats instead of prose sentences, bold key
+  numbers/phrases, and prefer short direct sentences over the long clause-chained default. Flag in
+  the draft's notes that bold markers need manual Unicode-bold conversion before pasting to
+  LinkedIn (its editor doesn't render markdown bold).
 
 ## 3. Calibrate: proven structure, dialed-down intensity
 
@@ -83,9 +91,18 @@ down the pushy/hyped register that "viral" LinkedIn advice usually implies.** Co
 - Prefer a **modest, confident-but-not-declarative** register — state the point plainly and let
   the substance carry it, rather than oversell it. If a sentence reads like it's trying hard to
   sound impressive, cut the trying-hard part and keep the substance.
+- **Default toward direct, no-fluff, human-like prose over essay-style build-up** (explicit user
+  instruction, 2026-09-24): before finalizing, re-read for connective/narrative scaffolding that
+  isn't doing real work — phrases like "here's the part that's easy to miss," "what actually
+  separates X is," "the honest read is" — and cut them so the finding is stated directly. This
+  applies across templates, not just the data-led/informational one, though that template (Section
+  4) leans into it hardest.
 - This calibration is a drafting instruction, not a discovered voice trait — don't write it into
-  `voice/style-profile.md` itself. It governs *how this skill drafts*, applied on top of whatever
-  the style profile already documents as genuinely this user's voice.
+  `voice/style-profile.md` itself (the data-led/informational *template* and its formatting devices
+  did get written there, since those are now binding defaults per explicit user instruction, not
+  just this skill's own stylistic dial). This bullet's no-fluff re-read pass governs *how this
+  skill drafts*, applied on top of whatever the style profile already documents as genuinely this
+  user's voice.
 
 ## 4. Pick the structural template
 
@@ -102,6 +119,15 @@ Match the idea to one of the shapes `voice/style-profile.md` documents:
   yet evidence-backed** — it should get folded into `voice/style-profile.md` properly once a few
   real how-to drafts/posts exist to confirm the shape, per that file's own evidence-driven ground
   rules.
+- **Data-led/informational** (added 2026-09-24, per explicit user feedback — see
+  `voice/style-profile.md`'s Structural Patterns section): for ideas whose payload is primarily
+  findings from a real dataset. Direct-question open naming what's being investigated → findings
+  stated plainly with a scannable arrow-bullet list for parallel stats, minimal connective
+  narration, bold emphasis on key numbers → closes on a compact two-phrase contrast or a genuine
+  open question about the finding's real implication. **This is the default template for stat-
+  heavy market/hiring-data ideas going forward** — prefer it over stretching a take/op-ed template
+  around dense data, per the same 2026-09-24 feedback. Still flagged inferred/not yet evidence-
+  backed from the user's own raw writing, same caveat as practical/how-to.
 
 ## 5. Write 2-3 hook variants
 
@@ -126,6 +152,9 @@ before finalizing:
   "Let's dive in," em-dash-as-crutch overuse beyond what's actually documented as this user's
   pattern, empty intensifiers ("game-changer," "unlock," "leverage" as a verb), triplet-parallelism
   padding ("It's not just X, it's Y, it's Z"), and generic listicle-emoji section headers.
+- Scan specifically for unnecessary connective/narrative scaffolding around findings or stats
+  ("here's the part that's easy to miss," "what actually separates X is," "the honest read is") —
+  per the 2026-09-24 no-fluff instruction, cut it and state the finding directly instead.
 - Confirm the long-clause rhythm actually survived reformatting into short lines — re-flatten the
   draft mentally and check it still reads as one of the user's real, chained sentences, not a
   series of short choppy fragments that only look like their voice at a glance.
