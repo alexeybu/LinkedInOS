@@ -18,10 +18,13 @@ stale ones, or be skipped.
 
 ## 1. Load constraints first
 
-Read `strategy/content-pillars.md` (pillars + audience + **guardrails** — binding, not optional)
-and `voice/style-profile.md` (structural patterns: this user favors direct-question opens,
-skeptical-then-credit argument shape, analogy-driven closes, inline-dash lists over bullets — bias
-idea *angles* toward shapes that'll actually draft well in this voice, not generic hooks).
+Read `strategy/content-pillars.md` (pillars + audience + **guardrails** — binding, not optional,
+plus the Content Type Preference section's 2026-09-26 sharpening) and `voice/style-profile.md`
+(structural patterns: this user favors direct-question opens, skeptical-then-credit argument shape,
+analogy-driven closes, inline-dash lists over bullets — bias idea *angles* toward shapes that'll
+actually draft well in this voice, not generic hooks). Also read `strategy/post-research-notes.md`
+if present — real external-post research on what actually reads as useful vs. theoretical in this
+exact content space (see Section 2 below for how to use it).
 
 ## 2. Mine real sources
 
@@ -45,13 +48,30 @@ directly:
 Don't force every source on every run — use what's productive, and don't manufacture an idea that
 isn't backed by something real just to hit a round number.
 
+- **External post research** (`strategy/post-research-notes.md`, if present) — use this to check
+  *shape*, never to source topics or content directly: does a candidate idea have a nameable
+  framework/formula, a concrete decision rule, and room for a real worked example, per that file's
+  Sage patterns? An idea that's really just "here's my take on X" with no framework/number/decision
+  rule attached is the exact theoretical failure mode that research pass diagnosed — sharpen the
+  idea until it has one of those three ingredients, or reconsider whether it belongs in this batch.
+  Never copy a scanned post's actual story, stat, or text into a backlog idea — only the structural
+  pattern (e.g. "this topic could be a named decision-rule framework" is fair use of the research;
+  "use this specific example from the post I read" is not).
+
 ## 3. Shape each idea
 
 For each candidate, write:
 - **One-line concept** — specific enough that `draft-post` doesn't have to invent the substance.
+  Per the 2026-09-26 Content Type Preference sharpening, a practical/how-to concept should name (or
+  clearly imply) a real framework, formula, checklist, or decision rule — not just "an approach to
+  X" — since that's the actual differentiator between a useful post and a theoretical-sounding one.
 - **Pillar** tag (must match one of the pillars actually defined in `strategy/content-pillars.md`).
 - **Angle/hook shape** — reference the voice profile's preferred shapes where it fits (e.g.
-  "skeptical-first, credit-second" or "direct-question open") rather than leaving it generic.
+  "skeptical-first, credit-second," "direct-question open," or the framework/cheat-sheet template)
+  rather than leaving it generic.
+- **Format** — flag early if the idea is really a full checklist/cheat-sheet (→ `draft-carousel`,
+  per the post-research finding that reference content drives far more saves/reposts as a document)
+  versus a single framework/decision-rule that fits a text post.
 - **Source** — one line on where this came from (a research finding, a CV accomplishment
   anonymized, something said live) so `draft-post` can go back to it for real detail.
 - **Guardrail check** — a quick explicit note that it doesn't name a real employer, doesn't reveal

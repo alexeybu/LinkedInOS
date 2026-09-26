@@ -44,6 +44,12 @@ Read, in this order:
   usable).
 - **`strategy/trend-notes.md`**, if present — format-trend mechanics (see LinkedIn Mechanics
   below) and any pillar-specific angle notes relevant to this idea.
+- **`strategy/post-research-notes.md`**, if present — real external-post research on what
+  structurally separates useful-reading posts from theoretical-reading ones (named framework/
+  formula + decision rule + real example, per its Sage/Fool patterns). Before finalizing a
+  practical/how-to, framework/cheat-sheet, or data-led idea, check it against these three
+  ingredients — this is what Section 4's framework/cheat-sheet template and Section 7's reframe-
+  closer nuance are both built on.
 - The chosen row in **`ideas/backlog.md`** — concept, angle, source, guardrail check. Go back to
   the cited source material for real specifics rather than inventing detail the idea note doesn't
   already contain.
@@ -128,6 +134,20 @@ Match the idea to one of the shapes `voice/style-profile.md` documents:
   heavy market/hiring-data ideas going forward** — prefer it over stretching a take/op-ed template
   around dense data, per the same 2026-09-24 feedback. Still flagged inferred/not yet evidence-
   backed from the user's own raw writing, same caveat as practical/how-to.
+- **Framework/cheat-sheet** (added 2026-09-26, from `strategy/post-research-notes.md`'s external
+  post research): for ideas whose payload is a real, nameable process/framework/checklist. Opens on
+  the real gap or question directly, not a topic announcement. Payload must contain the three
+  ingredients that research found actually separate useful from theoretical: a named framework or
+  formula with its real mechanics, a concrete decision rule (situation → choice), and at least one
+  worked example with real figures — **treat missing any of these three as a reason to send the
+  idea back for sharpening, not a reason to draft it as-is.** Closes on either an earned reframe
+  that compresses the substance just given (see Section 7's reframe-closer note — this is the one
+  template where that's encouraged, not flagged) or a question asking for a specific example. If the
+  idea is really a multi-item checklist/cheat-sheet rather than one framework, flag that it likely
+  belongs in `draft-carousel` instead — real data showed document format drives far more saves/
+  reposts for this kind of reference content. **This is the default template for practical/how-to
+  ideas going forward**, superseding the plainer practical/how-to template above whenever the idea
+  can support a real framework/formula (which per the research, it usually can once pushed).
 
 ## 5. Write 2-3 hook variants
 
@@ -152,6 +172,12 @@ before finalizing:
   "Let's dive in," em-dash-as-crutch overuse beyond what's actually documented as this user's
   pattern, empty intensifiers ("game-changer," "unlock," "leverage" as a verb), triplet-parallelism
   padding ("It's not just X, it's Y, it's Z"), and generic listicle-emoji section headers.
+- **Reframe-closer check (corrected 2026-09-26, see `voice/style-profile.md`'s Reframe-closer
+  correction note)**: a "not X, it's Y" line is no longer an automatic flag. Ask whether it
+  compresses real, already-stated substance (a named framework, real numbers, a concrete diagnostic
+  chain) into one line — if so, it's the validated framework/cheat-sheet closer pattern, leave it.
+  Only flag it if it's standing in for substance that was never actually provided — a reframe used
+  as the post's real content instead of a compression of content already given.
 - Scan specifically for unnecessary connective/narrative scaffolding around findings or stats
   ("here's the part that's easy to miss," "what actually separates X is," "the honest read is") —
   per the 2026-09-24 no-fluff instruction, cut it and state the finding directly instead.
